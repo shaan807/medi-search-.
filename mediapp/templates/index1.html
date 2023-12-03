@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease Prediction</title>
+    <style>
+        body {
+            background-color: #eaf6f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1, h3 {
+            text-align: center;
+            color: #333333;
+            margin-top: 20px;
+        }
+        
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td {
+            padding: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .button1 {
+            background-color: #4caf50;
+        }
+        
+        .button2 {
+            background-color: #008cba;
+        }
+        
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .result h2 {
+            color: #FF6600;
+            font-size: 24px;
+        }
+        
+        .thanks {
+            color: #011701;
+            margin-top: 10px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+<h1>Disease Prediction App</h1>
+<h3>Please Enter the Symptoms</h3>
+
+<form action="{% url 'result' %}">
+    {% csrf_token %}
+
+    <table>
+        <tr>
+            <td>Itching:</td>
+            <td>
+                <label><input type="radio" name="itching" value="1"> Yes</label>
+                <label><input type="radio" name="itching" value="0" > No</label>
+            </td>
+            <td>Skin rash:</td>
+            <td><label><input type="radio" name="skin_rash" value="1"> Yes</label>
+                <label><input type="radio" name="skin_rash" value="0" > No</label></td>
+    
+        
+            
+        </tr>
+    
+        <tr>
+            <td>Joint pain:</td>
+            <td><label><input type="radio" name="joint_pain" value="1"> Yes</label>
+                <label><input type="radio" name="joint_pain" value="0" > No</label></td>
+                <td>Stomach pain:</td>
+            <td><label><input type="radio" name="stomach_pain" value="1"> Yes</label>
+                <label><input type="radio" name="stomach_pain" value="0" > No</label></td>
+        </tr>
+    
+        
+            
+        </tr>
+    
+        <tr>
+            <td>Vomiting:</td>
+            <td><label><input type="radio" name="vomiting" value="1"> Yes</label>
+                <label><input type="radio" name="vomiting" value="0"> No</label></td>
+                <td>Fatigue:</td>
+            <td><label><input type="radio" name="fatigue" value="1"> Yes</label>
+                <label><input type="radio" name="fatigue" value="0" > No</label></td>
+        </tr>
+
+            
+        </tr>
+    
+        <tr>
+            <td>Cough:</td>
+            <td><label><input type="radio" name="cough" value="1"> Yes</label>
+                <label><input type="radio" name="cough" value="0"> No</label></td>
+
+                <td>High fever:</td>
+                <td><label><input type="radio" name="high_fever" value="1"> Yes</label>
+                    <label><input type="radio" name="high_fever" value="0" > No</label></td>
+        </tr>
+    
+        
+            
+        </tr>
+    
+        <tr>
+            <td>Breathlessness:</td>
+            <td><label><input type="radio" name="breathlessness" value="1"> Yes</label>
+                <label><input type="radio" name="breathlessness" value="0" > No</label></td>
+                <td>Headache:</td>
+                <td><label><input type="radio" name="headache" value="1"> Yes</label>
+                    <label><input type="radio" name="headache" value="0"> No</label></td>
+        </tr>
+    
+        
+           
+        </tr>
+    
+        <tr>
+            <td>Nausea:</td>
+            <td><label><input type="radio" name="nausea" value="1"> Yes</label>
+                <label><input type="radio" name="nausea" value="0" > No</label></td>
+                <td>Abdominal pain:</td>
+            <td><label><input type="radio" name="abdominal_pain" value="1"> Yes</label>
+                <label><input type="radio" name="abdominal_pain" value="0" > No</label></td>
+        </tr>
+    
+        
+            
+        </tr>
+    </table>
+    <div class="button-container">
+    <button type="submit" name="" value="submit" class="button button1">Predict Disease</button>
+    <button type="reset" name="" value="reset" class="button button1">Reset</button>
+    </div>
+</form>
+</div>
+
+{% if answer %}
+    <div class="result">
+        <h2>Predicted Disease: {{ answer }}</h2>
+        <h3 class="thanks">Thank you for using Disease Prediction App</h3>
+    </div>
+{% endif %}
+
+
+
+</body>
+</html>

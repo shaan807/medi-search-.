@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            background-color: #62d2a2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 1, 0.1);
+        }
+        
+        h1, h3 {
+            text-align: center;
+            color: #333333;
+            margin-top: 20px;
+        }
+        
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td {
+            padding: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"] {
+            margin-right: 10px;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .button1 {
+            background-color: #4caf50;
+        }
+        
+        .button2 {
+            background-color: #008cba;
+        }
+        
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .result h2 {
+            color: #FF6600;
+            font-size: 24px;
+        }
+        
+        .thanks {
+            color: #011701;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body style="background-color:#62d2a2">
+
+    <div class="container">
+<center>
+    <h2 style="background: linear-gradient(to left, lightgreen, darkgreen); -webkit-background-clip: text; color: transparent; font-size: 36px; font-weight: bold; line-height: normal; margin-top: 1rem;">
+        Heart Disease Prediction
+      </h2>
+    <center><h3>Please Enter the Data</h3></center> <br>
+
+    <form action="{% url 'result2' %}" method="get">
+        {% csrf_token %}
+        <table align="center">
+            <tr><td>Age:</td><td><input type="text" required name="age"></td></tr>
+            <tr><td>Sex:</td><td><input type="text" required name="sex"></td></tr>
+            <tr><td>Cp:</td><td><input type="text" required name="cp"></td></tr>
+            <tr><td>Trestbps:</td><td><input type="text" required name="trestbps"></td></tr>
+            <tr><td>Chol:</td><td><input type="text" required name="chol"></td></tr>
+            <tr><td>Fbs:</td><td><input type="text" required name="fbs"></td></tr>
+            <tr><td>Restecg:</td><td><input type="text" required name="restecg"></td></tr>
+            <tr><td>Thalach:</td><td><input type="text" required name="thalach"></td></tr>
+            <tr><td>Exang:</td><td><input type="text" required name="exang"></td></tr>
+            <tr><td>Oldpeak:</td><td><input type="text" required name="oldpeak"></td></tr>
+            <tr><td>Slope:</td><td><input type="text" required name="slope"></td></tr>
+            <tr><td>Ca:</td><td><input type="text" required name="ca"></td></tr>
+            <tr><td>Thal:</td><td><input type="text" required name="thal"></td></tr>
+            <!-- <tr><td>Target:</td><td><input type="text" required name="target"></td></tr> -->
+        </table>
+        <center><button type="submit" name="submit" value="submit" class="button button1">Submit</button></center><br>
+        <center><button type="reset" name="reset" value="reset" class="button button1">Reset</button></center>
+    </form>
+    
+    {% if answer %}
+        <center>
+            <h2 style="color:#FF6600">  {{answer}}</h2>
+            <h3 style="color:#009900">wite something better</h3>
+        </center>
+    {% endif %}
+
+</center>
+</body>
+</html>

@@ -1,0 +1,37 @@
+base:
+  project: hackathon
+  random_state : 20
+  target_col : prognosis
+
+data_source:
+  s3_source: data/raw/hackathon_data.csv
+
+load_data:
+  raw_dataset_csv: data/raw/hackathon_data.csv
+
+split_data:
+  train_path: data/processed/train_hackathon_data.csv
+  test_path : data/processed/test_hackathon_data.csv
+  test_size: 0.2
+
+estimators:
+  ElasticNet:
+    params:
+      alpha: 0.7
+      l1_ration: 0.8
+
+model_dirs: 
+  model_dir : models
+
+reports:
+  params: reports/params.json
+  score: reports/scores.json
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: ElasticNet_Expenses
+  run_name: mlops
+  registered_model_name: ElasticNetMedicalExpenses
+  # registered_model_name : abc
+  #remote_server_uri: https://dagshub.com/ahamadashiq95/regression.mlflow
+  remote_server_uri : http://127.0.0.1:5000
